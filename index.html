@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<HEAD>
+		<title>Pagina Parqueos</title>
+	</HEAD>
+
+	<body class="page_bg">
+		<b> Parqueo 1  </b>
+		<BR>
+		<!--se carga la imagen de fondo del parqueo -->
+		<img src="Parqueo1/Parqueo.jpg" alt="Foto parqueo" style="position: absolute;"/>
+		<!--Se abre el archivo de texto que contiene el estado del parqueo -->
+		<?php 
+			$Parqueo_txt = fopen("dataFile.txt", "r");
+		?>
+		<!--Se Cargan las imagenes de cada carro -->
+		
+
+		<?php
+			while (!feof($Parqueo_txt)) 
+			//for ($i=0; $i < 9; $i++)			
+			{	
+				$Ini_img   = '<img src=';
+				$Fin_img   = ' alt="Foto carro" style="position: absolute;"/>';
+				$Caracter  = fread($Parqueo_txt, 2);
+				$Caracter2 = fread($Parqueo_txt, 2);										
+				switch ($Caracter) 
+				{
+					//Cuando sale un auto
+					case 10:echo $Ini_img . "Parqueo1/Carro1.png" . $Fin_img; break;
+					case 11:echo $Ini_img . "Parqueo1/Carro2.png" . $Fin_img; break; 
+					case 12:echo $Ini_img . "Parqueo1/Carro3.png" . $Fin_img; break;
+					case 13:echo $Ini_img . "Parqueo1/Carro4.png" . $Fin_img; break;
+					case 14:echo $Ini_img . "Parqueo1/Carro5.png" . $Fin_img; break;
+					case 15:echo $Ini_img . "Parqueo1/Carro6.png" . $Fin_img; break;
+					case 16:echo $Ini_img . "Parqueo1/Carro7.png" . $Fin_img; break;
+					case 17:echo $Ini_img . "Parqueo1/Carro8.png" . $Fin_img; break;
+				}
+			}				
+		fclose($Parqueo_txt);
+		?>
+		
+	</body>
+
+</html>
